@@ -18,3 +18,12 @@ export async function findURL(url_id) {
         return false;
     }
 }
+
+export async function findShortURL(shortUrl) {
+    try {
+        return await connection.query(`SELECT * FROM links WHERE "shortUrl" = $1`, [shortUrl]);
+    } catch(err) {
+        console.log(err);
+        return false;
+    }
+}

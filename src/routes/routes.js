@@ -7,11 +7,13 @@ import { validateAuthorization } from "../middlewares/validateAuthorization.js";
 import { validateURL } from "../middlewares/validateURL.js";
 import postURL from "../controllers/urls/postURL.js";
 import { getURL } from "../controllers/urls/getURL.js";
+import { getShortURL } from "../controllers/urls/getShortURL.js";
 
 const router = express.Router();
 router.post("/signup", validateNewUser, signUp);
 router.post("/signin", validateUser, signIn);
 router.post("/urls/shorten", validateAuthorization, validateURL, postURL);
 router.get("/urls/:id", getURL);
+router.get("/urls/open/:shortUrl", getShortURL);
 
 export default router;
