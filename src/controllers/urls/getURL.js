@@ -7,7 +7,7 @@ export async function getURL(req,res) {
         if(results.rows.length === 0) {
             return res.sendStatus(404);
         }
-    
+        delete results.rows[0].user_id;
         return res.status(200).send(results.rows[0]);
     } catch(err) {
         console.log(err);
