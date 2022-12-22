@@ -1,5 +1,5 @@
-import { addSession, findSession, updateSession } from "../repositories/sessionRepositories.js";
-import { findUser } from "../repositories/userRepositories.js";
+import { addSession, findSession, updateSession } from "../../repositories/sessionRepositories.js";
+import { findUser } from "../../repositories/userRepositories.js";
 
 export async function signIn(req,res) {
     try {

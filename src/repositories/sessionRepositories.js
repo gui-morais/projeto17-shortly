@@ -10,6 +10,15 @@ export async function findSession(userId) {
     }
 }
 
+export async function validateSession(token) {
+    try {
+        return await connection.query(`SELECT * FROM sessions WHERE token = $1`, [token]);
+    } catch(err) {
+        console.log(err);
+        return "erro";
+    }
+}
+
 export async function addSession(userId) {
     try {
         const token = uuid();

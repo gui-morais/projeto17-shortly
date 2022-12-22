@@ -1,4 +1,4 @@
-import { addUser } from "../repositories/userRepositories.js";
+import { addUser } from "../../repositories/userRepositories.js";
 import bcrypt from "bcrypt";
 
 export function signUp(req,res) {
