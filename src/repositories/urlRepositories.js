@@ -9,3 +9,12 @@ export async function addURL(user_id, url, shortUrl) {
         return false;
     }
 }
+
+export async function findURL(url_id) {
+    try {
+        return await connection.query(`SELECT id, "shortUrl", url FROM links WHERE id = $1`, [url_id]);
+    } catch(err) {
+        console.log(err);
+        return false;
+    }
+}
