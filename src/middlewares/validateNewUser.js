@@ -1,5 +1,5 @@
 import { newUserSchema } from "../models/models.js";
-import { verifyUser } from "../repositories/userRepositories.js";
+import { findUser } from "../repositories/userRepositories.js";
 
 export async function validateNewUser(req,res,next) {
     try {
@@ -9,13 +9,13 @@ export async function validateNewUser(req,res,next) {
             return res.status(422).send(errors);
         }
 
-        const verify = await verifyUser(req.body.email);
+        const verifyUser = await findUser(req.body.email);
 
-        if(verify===null) {
+        if(verifyUser===null) {
             return res.sendStatus(500);
         }
 
-        if(!verify) {
+        if(verifyUser.rows.length!==0) {
             return res.sendStatus(409);
         }
 
