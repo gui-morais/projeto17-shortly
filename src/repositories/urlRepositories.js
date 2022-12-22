@@ -46,3 +46,12 @@ export async function delURL(url_id) {
         return false;
     }
 }
+
+export async function findURLSbyUser(user_id) {
+    try {
+        return await connection.query(`SELECT links.id, links."shortUrl", links.url, links."visitCount" FROM links JOIN users ON links.user_id = users.id WHERE users.id = $1;`, [user_id]);
+    } catch(err) {
+        console.log(err);
+        return false;
+    }
+}

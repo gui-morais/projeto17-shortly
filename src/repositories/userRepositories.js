@@ -9,6 +9,15 @@ export async function findUser(email) {
     }
 }
 
+export async function findUserByID(id) {
+    try{
+        return await connection.query(`SELECT id, name FROM users WHERE id = $1;`, [id]);
+    } catch (err) {
+        console.log(err);
+        return null
+    }
+}
+
 export async function addUser(user) {
     try {
         await connection.query(`INSERT INTO users (name, email, password) VALUES ($1, $2, $3);`, [user.name, user.email, user.password]);

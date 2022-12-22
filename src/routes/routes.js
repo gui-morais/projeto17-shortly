@@ -9,6 +9,7 @@ import postURL from "../controllers/urls/postURL.js";
 import { getURL } from "../controllers/urls/getURL.js";
 import { getShortURL } from "../controllers/urls/getShortURL.js";
 import { deleteURL } from "../controllers/urls/deleteURL.js";
+import { getUser } from "../controllers/users/getUser.js";
 
 const router = express.Router();
 router.post("/signup", validateNewUser, signUp);
@@ -17,5 +18,6 @@ router.post("/urls/shorten", validateAuthorization, validateURL, postURL);
 router.get("/urls/:id", getURL);
 router.get("/urls/open/:shortUrl", getShortURL);
 router.delete("/urls/:id", validateAuthorization, deleteURL);
+router.get("/users/me", validateAuthorization, getUser);
 
 export default router;
