@@ -21,7 +21,7 @@ export async function findURL(url_id) {
 
 export async function findShortURL(shortUrl) {
     try {
-        return await connection.query(`SELECT * FROM links WHERE "shortUrl" = $1;`, [shortUrl]);
+        return await connection.query(`SELECT * FROM links WHERE links."shortUrl" = $1;`, [shortUrl]);
     } catch(err) {
         console.log(err);
         return false;
@@ -30,7 +30,7 @@ export async function findShortURL(shortUrl) {
 
 export async function incrementVisitCount(shortUrl, newCount) {
     try {
-        return await connection.query(`UPDATE links SET "visitCount" = $1 WHERE "shortUrl" = $2;`, [newCount, shortUrl]);
+        return await connection.query(`UPDATE links SET "visitCount" = $1 WHERE links."shortUrl" = $2;`, [newCount, shortUrl]);
     } catch(err) {
         console.log(err);
         return false;
