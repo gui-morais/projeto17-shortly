@@ -10,6 +10,7 @@ import { getURL } from "../controllers/urls/getURL.js";
 import { getShortURL } from "../controllers/urls/getShortURL.js";
 import { deleteURL } from "../controllers/urls/deleteURL.js";
 import { getUser } from "../controllers/users/getUser.js";
+import { getRanking } from "../controllers/users/getRanking.js";
 
 const router = express.Router();
 router.post("/signup", validateNewUser, signUp);
@@ -19,5 +20,6 @@ router.get("/urls/:id", getURL);
 router.get("/urls/open/:shortUrl", getShortURL);
 router.delete("/urls/:id", validateAuthorization, deleteURL);
 router.get("/users/me", validateAuthorization, getUser);
+router.get("/ranking", getRanking);
 
 export default router;
