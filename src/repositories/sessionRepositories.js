@@ -40,3 +40,13 @@ export async function updateSession(sessionId) {
         return false;
     }
 }
+
+export async function deleteSession(token) {
+    try {
+        await connection.query(`DELETE FROM sessions WHERE token = $1`, [token]);
+        return true;
+    } catch(err) {
+        console.log(err);
+        return false;
+    }
+}

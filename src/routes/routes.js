@@ -11,6 +11,7 @@ import { getShortURL } from "../controllers/urls/getShortURL.js";
 import { deleteURL } from "../controllers/urls/deleteURL.js";
 import { getUser } from "../controllers/users/getUser.js";
 import { getRanking } from "../controllers/users/getRanking.js";
+import { signOut } from "../controllers/users/signOut.js";
 
 const router = express.Router();
 router.post("/signup", validateNewUser, signUp);
@@ -21,5 +22,6 @@ router.get("/urls/open/:shortUrl", getShortURL);
 router.delete("/urls/:id", validateAuthorization, deleteURL);
 router.get("/users/me", validateAuthorization, getUser);
 router.get("/ranking", getRanking);
+router.delete("/signout", validateAuthorization, signOut);
 
 export default router;
